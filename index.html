@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wakeup India </title>
+    <title>Wakeup India</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
@@ -202,36 +202,7 @@
             100% { transform: translateY(-16px); }
         }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.8rem;
-            margin: 2rem 0 1.2rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 1.8rem 1.2rem;
-            border-radius: 32px;
-            text-align: center;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
-            border: 1px solid #ede6db;
-            transition: 0.2s;
-        }
-
-        .feature-card i {
-            font-size: 2.6rem;
-            color: #0b2a3b;
-            background: #f5b04230;
-            padding: 14px;
-            border-radius: 40px;
-            margin-bottom: 0.6rem;
-        }
-
-        .feature-card h3 {
-            font-weight: 600;
-            color: #1e2f3b;
-        }
+        /* feature grid removed — no cards */
 
         /* ----- BLOG ----- */
         .blog-header {
@@ -760,12 +731,7 @@
                 <div class="hero-emoji">🚀</div>
             </div>
 
-            <div class="feature-grid">
-                <div class="feature-card"><i class="fas fa-newspaper"></i><h3>Daily Updates</h3></div>
-                <div class="feature-card"><i class="fas fa-hand-holding-heart"></i><h3>Community</h3></div>
-                <div class="feature-card"><i class="fas fa-chart-line"></i><h3>Growth</h3></div>
-                <div class="feature-card"><i class="fas fa-calendar-check"></i><h3>Events</h3></div>
-            </div>
+            <!-- Feature cards removed entirely -->
 
             <div style="background: #dfd5c7; border-radius: 40px; padding: 1.8rem; margin-top: 0.8rem;">
                 <p style="font-size: 1.1rem; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
@@ -994,148 +960,4 @@
                     posts.splice(index, 1);
                     savePosts();
                     const activePage = document.querySelector('.page.active-page');
-                    if (activePage && activePage.id === 'page-single') {
-                        switchPage('blog');
-                    }
-                } else {
-                    alert('Post not found.');
-                }
-            }
-
-            function escapeHtml(text) {
-                if (!text) return '';
-                const map = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'};
-                return String(text).replace(/[&<>"']/g, function(m) { return map[m]; });
-            }
-
-            function addPost(title, author, content) {
-                if (!title.trim() || !content.trim()) return false;
-                const newPost = {
-                    id: Date.now(),
-                    title: title.trim(),
-                    author: author.trim() || 'Wakeup India',
-                    content: content.trim(),
-                    date: new Date().toLocaleDateString('en-IN')
-                };
-                posts.push(newPost);
-                savePosts();
-                return true;
-            }
-
-            function clearPosts() {
-                if (posts.length === 0) return;
-                if (confirm('Delete all posts? This action is permanent.')) {
-                    posts = [];
-                    savePosts();
-                }
-            }
-
-            // ----- NAVIGATION -----
-            const navBtns = document.querySelectorAll('.nav-btn');
-            const pages = {
-                home: document.getElementById('page-home'),
-                blog: document.getElementById('page-blog'),
-                single: document.getElementById('page-single'),
-                admin: document.getElementById('page-admin')
-            };
-
-            function switchPage(pageId) {
-                Object.values(pages).forEach(p => p.classList.remove('active-page'));
-                if (pages[pageId]) pages[pageId].classList.add('active-page');
-                navBtns.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.dataset.page === pageId) btn.classList.add('active');
-                });
-                if (pageId === 'single') {
-                    navBtns.forEach(btn => btn.classList.remove('active'));
-                }
-            }
-
-            navBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const page = this.dataset.page;
-                    if (page) switchPage(page);
-                });
-            });
-
-            // ----- LOGIN (simple) -----
-            const loginForm = document.getElementById('loginForm');
-            const loginAlert = document.getElementById('loginAlert');
-            const alertMessage = document.getElementById('alertMessage');
-            const loginStatus = document.getElementById('loginStatus');
-            const cmsPanel = document.getElementById('adminCmsPanel');
-            const loginCard = document.getElementById('adminLoginCard');
-            let loggedIn = false;
-
-            function showAlert(msg) {
-                alertMessage.textContent = msg;
-                loginAlert.classList.add('show');
-                setTimeout(() => loginAlert.classList.remove('show'), 4000);
-            }
-
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const username = document.getElementById('username').value.trim();
-                const password = document.getElementById('password').value.trim();
-
-                if (username === 'admin' && password === 'admin123') {
-                    loggedIn = true;
-                    loginCard.style.display = 'none';
-                    cmsPanel.style.display = 'block';
-                    loginStatus.textContent = '✅ Logged in as Admin';
-                } else {
-                    showAlert('❌ Invalid username or password. Try again.');
-                }
-            });
-
-            // ----- ADMIN POST FORM -----
-            const form = document.getElementById('adminPostForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    if (!loggedIn) {
-                        alert('Please login first.');
-                        return;
-                    }
-                    const title = document.getElementById('postTitle');
-                    const author = document.getElementById('postAuthor');
-                    const content = document.getElementById('postContent');
-                    if (!title.value.trim() || !content.value.trim()) {
-                        alert('Please fill in both title and content.');
-                        return;
-                    }
-                    const success = addPost(title.value, author.value, content.value);
-                    if (success) {
-                        title.value = '';
-                        content.value = '';
-                        switchPage('blog');
-                        navBtns.forEach(b => {
-                            b.classList.remove('active');
-                            if (b.dataset.page === 'blog') b.classList.add('active');
-                        });
-                    } else {
-                        alert('Something went wrong.');
-                    }
-                });
-            }
-
-            // clear posts button
-            const clearBtn = document.getElementById('clearPostsBtn');
-            if (clearBtn) {
-                clearBtn.addEventListener('click', function() {
-                    if (!loggedIn) {
-                        alert('Please login first.');
-                        return;
-                    }
-                    clearPosts();
-                });
-            }
-
-            // ----- INIT -----
-            loadPosts();
-            switchPage('home');
-        })();
-    </script>
-
-</body>
-</html>
+                    if (activePage && activePage
