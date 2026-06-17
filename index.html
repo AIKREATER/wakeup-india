@@ -89,7 +89,6 @@
             align-items: center;
             gap: 8px;
             letter-spacing: 0.5px;
-            position: relative;
         }
 
         .nav-btn i {
@@ -731,8 +730,6 @@
                 <div class="hero-emoji">🚀</div>
             </div>
 
-            <!-- Feature cards removed entirely -->
-
             <div style="background: #dfd5c7; border-radius: 40px; padding: 1.8rem; margin-top: 0.8rem;">
                 <p style="font-size: 1.1rem; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
                     <i class="fas fa-quote-left" style="color: #f5b042; font-size: 2rem;"></i>
@@ -960,4 +957,165 @@
                     posts.splice(index, 1);
                     savePosts();
                     const activePage = document.querySelector('.page.active-page');
-                    if (activePage && activePage
+                    if (activePage && activePage.id === 'page-single') {
+                        switchPage('blog');
+                    }
+                } else {
+                    alert('Post not found.');
+                }
+            }
+
+            function escapeHtml(text) {
+                if (!text) return '';
+                const map = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'};
+                return String(text).replace(/[&<>"']/g, function(m) { return map[m]; });
+            }
+
+            function addPost(title, author, content) {
+                if (!title.trim() || !content.trim()) return false;
+                const newPost = {
+                    id: Date.now(),
+                    title: title.trim(),
+                    author: author.trim() || 'Wakeup India',
+                    content: content.trim(),
+                    date: new Date().toLocaleDateString('en-IN')
+                };
+                posts.push(newPost);
+                savePosts();
+                return true;
+            }
+
+            function clearPosts() {
+                if (posts.length === 0) return;
+                if (confirm('Delete all posts? This action is permanent.')) {
+                    posts = [];
+                    savePosts();
+                }
+            }
+
+            // ----- NAVIGATION (FIXED) -----
+            const navBtns = document.querySelectorAll('.nav-btn');
+            const pageMap = {
+                home: document.getElementById('page-home'),
+                blog: document.getElementById('page-blog'),
+                single: document.getElementById('page-single'),
+                admin: document.getElementById('page-admin')
+            };
+
+            function switchPage(pageId) {
+                // Hide all pages
+                Object.values(pageMap).forEach(p => {
+                    if (p) p.classList.remove('active-page');
+                });
+                // Show target page
+                if (pageMap[pageId]) {
+                    pageMap[pageId].classList.add('active-page');
+                }
+                // Update nav button active states
+                navBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.page === pageId) {
+                        btn.classList.add('active');
+                    }
+                });
+                // If single page, remove active from all nav buttons
+                if (pageId === 'single') {
+                    navBtns.forEach(btn => btn.classList.remove('active'));
+                }
+            }
+
+            // Attach click events to nav buttons
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const page = this.dataset.page;
+                    if (page && pageMap[page]) {
+                        switchPage(page);
+                    } else {
+                        console.warn('Page not found:', page);
+                    }
+                });
+            });
+
+            // ----- LOGIN (simple) -----
+            const loginForm = document.getElementById('loginForm');
+            const loginAlert = document.getElementById('loginAlert');
+            const alertMessage = document.getElementById('alertMessage');
+            const loginStatus = document.getElementById('loginStatus');
+            const cmsPanel = document.getElementById('adminCmsPanel');
+            const loginCard = document.getElementById('adminLoginCard');
+            let loggedIn = false;
+
+            function showAlert(msg) {
+                alertMessage.textContent = msg;
+                loginAlert.classList.add('show');
+                setTimeout(() => loginAlert.classList.remove('show'), 4000);
+            }
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                if (username === 'admin' && password === 'admin123') {
+                    loggedIn = true;
+                    loginCard.style.display = 'none';
+                    cmsPanel.style.display = 'block';
+                    loginStatus.textContent = '✅ Logged in as Admin';
+                } else {
+                    showAlert('❌ Invalid username or password. Try again.');
+                }
+            });
+
+            // ----- ADMIN POST FORM -----
+            const form = document.getElementById('adminPostForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    if (!loggedIn) {
+                        alert('Please login first.');
+                        return;
+                    }
+                    const title = document.getElementById('postTitle');
+                    const author = document.getElementById('postAuthor');
+                    const content = document.getElementById('postContent');
+                    if (!title.value.trim() || !content.value.trim()) {
+                        alert('Please fill in both title and content.');
+                        return;
+                    }
+                    const success = addPost(title.value, author.value, content.value);
+                    if (success) {
+                        title.value = '';
+                        content.value = '';
+                        switchPage('blog');
+                        navBtns.forEach(b => {
+                            b.classList.remove('active');
+                            if (b.dataset.page === 'blog') b.classList.add('active');
+                        });
+                    } else {
+                        alert('Something went wrong.');
+                    }
+                });
+            }
+
+            // clear posts button
+            const clearBtn = document.getElementById('clearPostsBtn');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function() {
+                    if (!loggedIn) {
+                        alert('Please login first.');
+                        return;
+                    }
+                    clearPosts();
+                });
+            }
+
+            // ----- INIT -----
+            loadPosts();
+            // Start on home page
+            switchPage('home');
+        })();
+    </script>
+
+</body>
+</html>
+```
