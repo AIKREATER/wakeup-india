@@ -3,1119 +3,1127 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wakeup India</title>
-    <!-- Font Awesome -->
+    <title>Wakeup India · Rise & Inspire</title>
+    <meta name="description" content="Wakeup India - Let's ignite the dawn. Rise together with inspiring stories and voices." />
+    <meta property="og:title" content="Wakeup India Blog" />
+    <meta property="og:description" content="Be the change that you wish to see in India." />
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/f5b042/0b2a3b?text=Wakeup+India" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* ----- RESET & BASE ----- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+        body { background: #f9f6f0; color: #1e1e2a; min-height: 100vh; display: flex; flex-direction: column; transition: background 0.3s, color 0.3s; }
+        body.dark-mode { background: #121212; color: #e8e4de; }
+        body.dark-mode .navbar { background: #1a1a2e; border-bottom-color: #f5b042; }
+        body.dark-mode .home-hero { background: #1e2a3a; border-color: #f5b04240; }
+        body.dark-mode .blog-post { background: #1e1e2e; border-left-color: #f5b042; }
+        body.dark-mode .blog-post h3 a { color: #e8e4de; }
+        body.dark-mode .blog-post .excerpt { color: #c0c0c0; }
+        body.dark-mode .meta { color: #a0a0a0; }
+        body.dark-mode .single-post-page { background: #1e1e2e; }
+        body.dark-mode .single-post-page h1 { color: #e8e4de; }
+        body.dark-mode .single-post-page .full-content { color: #c0c0c0; }
+        body.dark-mode .date-filter { background: #2a2a3e; }
+        body.dark-mode .date-filter input { background: #1a1a2e; color: #e8e4de; border-color: #444; }
+        body.dark-mode .date-filter button { background: #f5b042; color: #1a1a2e; }
+        body.dark-mode .admin-panel { background: #1a1a2e; }
+        body.dark-mode .login-card { background: #1a1a2e; }
+        body.dark-mode .login-card .input-group input { background: #2a2a3e; color: #e8e4de; }
+        body.dark-mode .footer-note { border-top-color: #333; color: #888; }
+        body.dark-mode .login-card .demo-hint { background: #2a2a3e; }
+        body.dark-mode .home-hero .hero-text h1 { color: #e8e4de; }
+        body.dark-mode .home-hero .hero-text p { color: #c0c0c0; }
 
-        body {
-            background: #f9f6f0;
-            color: #1e1e2a;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* ----- NAVIGATION ----- */
         .navbar {
-            background: #0b2a3b;
-            padding: 1.2rem 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 4px solid #f5b042;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: all 0.25s ease;
+            background: #0b2a3b; padding: 1rem 2rem; display: flex; flex-wrap: wrap;
+            align-items: center; justify-content: space-between; border-bottom: 4px solid #f5b042;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100;
+            transition: background 0.3s;
         }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .logo-icon {
-            font-size: 2.4rem;
-            color: #f5b042;
-            animation: pulseGlow 2.8s infinite ease-in-out;
-        }
-
+        .logo-area { display: flex; align-items: center; gap: 0.8rem; }
+        .logo-icon { font-size: 2rem; color: #f5b042; animation: pulseGlow 2.8s infinite ease-in-out; }
         @keyframes pulseGlow {
             0% { transform: scale(1); text-shadow: 0 0 0 #f5b042; }
             50% { transform: scale(1.08); text-shadow: 0 0 18px #f5b042; }
             100% { transform: scale(1); text-shadow: 0 0 0 #f5b042; }
         }
-
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #fff;
-            background: linear-gradient(135deg, #f5b042, #f7d68a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
+        .logo-text { font-size: 1.6rem; font-weight: 700; letter-spacing: 2px; background: linear-gradient(135deg, #f5b042, #f7d68a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-links { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
         .nav-btn {
-            background: transparent;
-            border: none;
-            color: #f0e8d9;
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 0.5rem 1.2rem;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: 0.25s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            letter-spacing: 0.5px;
+            background: transparent; border: none; color: #f0e8d9; font-size: 1rem; font-weight: 600;
+            padding: 0.4rem 1rem; border-radius: 40px; cursor: pointer; transition: 0.25s ease;
+            display: flex; align-items: center; gap: 6px;
         }
+        .nav-btn i { color: #f5b042; font-size: 1rem; }
+        .nav-btn:hover { background: #f5b042; color: #0b2a3b; transform: translateY(-2px); }
+        .nav-btn:hover i { color: #0b2a3b; }
+        .nav-btn.active { background: #f5b042; color: #0b2a3b; }
+        .nav-btn.active i { color: #0b2a3b; }
+        .hamburger { display: none; font-size: 1.8rem; color: #f5b042; cursor: pointer; background: none; border: none; }
+        .page-container { flex: 1; padding: 1.5rem; max-width: 1200px; margin: 0 auto; width: 100%; }
+        .page { display: none; animation: fadeSlide 0.4s ease forwards; }
+        .page.active-page { display: block; }
+        @keyframes fadeSlide { 0% { opacity: 0; transform: translateY(12px); } 100% { opacity: 1; transform: translateY(0); } }
 
-        .nav-btn i {
-            color: #f5b042;
-            font-size: 1.1rem;
-        }
-
-        .nav-btn:hover {
-            background: #f5b042;
-            color: #0b2a3b;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 14px rgba(245, 176, 66, 0.3);
-        }
-
-        .nav-btn:hover i {
-            color: #0b2a3b;
-        }
-
-        .nav-btn.active {
-            background: #f5b042;
-            color: #0b2a3b;
-        }
-
-        .nav-btn.active i {
-            color: #0b2a3b;
-        }
-
-        .admin-badge {
-            background: #f5b04220;
-            border: 1px solid #f5b042;
-            color: #f5b042;
-            padding: 0.2rem 0.9rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-left: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        /* ----- PAGES ----- */
-        .page-container {
-            flex: 1;
-            padding: 2rem 2rem 3rem;
-            max-width: 1300px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .page {
-            display: none;
-            animation: fadeSlide 0.4s ease forwards;
-        }
-
-        .page.active-page {
-            display: block;
-        }
-
-        @keyframes fadeSlide {
-            0% { opacity: 0; transform: translateY(12px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ----- HOME ----- */
+        /* Home */
         .home-hero {
-            background: linear-gradient(145deg, #e9dfd1, #d6cbbc);
-            padding: 3rem 2.5rem;
-            border-radius: 48px;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-            margin-bottom: 2.8rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid rgba(255,215,120,0.3);
+            background: linear-gradient(145deg, #e9dfd1, #d6cbbc); padding: 2.5rem 2rem; border-radius: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06); margin-bottom: 2rem; display: flex; flex-wrap: wrap;
+            align-items: center; justify-content: space-between; border: 1px solid rgba(255,215,120,0.3);
+            transition: background 0.3s;
         }
+        .hero-text { flex: 1 1 240px; }
+        .hero-text h1 { font-size: 2.8rem; font-weight: 800; color: #1e2f3b; }
+        .hero-text h1 i { color: #d48f2b; margin-right: 6px; }
+        .hero-text p { font-size: 1.2rem; margin: 0.8rem 0; color: #2d3f4b; border-left: 5px solid #f5b042; padding-left: 1rem; }
+        .hero-emoji { font-size: 4rem; animation: floatY 3.6s infinite alternate ease-in-out; }
+        @keyframes floatY { 0% { transform: translateY(0px); } 100% { transform: translateY(-12px); } }
 
-        .hero-text {
-            flex: 1 1 280px;
-        }
-
-        .hero-text h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            color: #1e2f3b;
-            letter-spacing: -0.5px;
-        }
-
-        .hero-text h1 i {
-            color: #d48f2b;
-            animation: pulseGlow 2.8s infinite ease-in-out;
-            margin-right: 6px;
-        }
-
-        .hero-text p {
-            font-size: 1.3rem;
-            margin: 1rem 0 0.4rem;
-            color: #2d3f4b;
-            font-weight: 400;
-            border-left: 5px solid #f5b042;
-            padding-left: 1.2rem;
-        }
-
-        .hero-emoji {
-            font-size: 4.8rem;
-            animation: floatY 3.6s infinite alternate ease-in-out;
-        }
-
-        @keyframes floatY {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-16px); }
-        }
-
-        /* feature grid removed — no cards */
-
-        /* ----- BLOG ----- */
-        .blog-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 2.4rem;
-            border-bottom: 2px dashed #d6cbbc;
-            padding-bottom: 1.2rem;
-        }
-
-        .blog-header h2 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #0b2a3b;
-        }
-
-        .blog-header h2 i {
-            color: #f5b042;
-            margin-right: 10px;
-        }
+        /* Blog */
+        .blog-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 1.5rem; border-bottom: 2px dashed #d6cbbc; padding-bottom: 1rem; gap: 10px; }
+        .blog-header h2 { font-size: 2rem; font-weight: 700; color: #0b2a3b; }
+        .blog-header h2 i { color: #f5b042; margin-right: 10px; }
+        .blog-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .date-filter { display: flex; align-items: center; gap: 8px; background: #e9dfd1; padding: 0.3rem 1rem; border-radius: 60px; flex-wrap: wrap; }
+        .date-filter label { font-weight: 600; color: #1e2f3b; font-size: 0.9rem; }
+        .date-filter input { padding: 0.2rem 0.6rem; border-radius: 40px; border: 1px solid #b5a690; background: white; font-size: 0.9rem; }
+        .date-filter button { background: #0b2a3b; color: #f5b042; border: none; padding: 0.2rem 1rem; border-radius: 40px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 0.85rem; }
+        .date-filter button:hover { background: #f5b042; color: #0b2a3b; }
+        .search-box { display: flex; align-items: center; gap: 6px; background: #e9dfd1; padding: 0.2rem 0.8rem; border-radius: 60px; }
+        .search-box input { padding: 0.2rem 0.6rem; border-radius: 40px; border: 1px solid #b5a690; background: white; font-size: 0.9rem; width: 140px; }
+        .search-box button { background: #0b2a3b; color: #f5b042; border: none; padding: 0.2rem 0.8rem; border-radius: 40px; cursor: pointer; }
 
         .blog-post {
-            background: white;
-            padding: 2rem 2rem 1.6rem;
-            border-radius: 32px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            border-left: 8px solid #f5b042;
-            transition: 0.2s;
-            position: relative;
+            background: white; padding: 1.5rem 1.5rem 1.2rem; border-radius: 28px; margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04); border-left: 6px solid #f5b042; transition: 0.2s; position: relative;
         }
-
-        .blog-post h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #1e2f3b;
-            padding-right: 60px;
-        }
-
-        .blog-post h3 a {
-            color: #1e2f3b;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .blog-post h3 a:hover {
-            color: #f5b042;
-            text-decoration: underline;
-        }
-
-        .blog-post .meta {
-            color: #5f6f7a;
-            font-size: 0.95rem;
-            margin: 0.5rem 0 0.8rem;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .blog-post .meta i {
-            margin-right: 5px;
-            color: #f5b042;
-        }
-
-        .blog-post .excerpt {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #2f3f4a;
-        }
-
-        .blog-post .post-tag {
-            background: #e3d9cb;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #1e2f3b;
-            display: inline-block;
-            margin-top: 0.6rem;
-        }
-
-        .blog-post .read-more {
-            display: inline-block;
-            margin-top: 0.8rem;
-            color: #f5b042;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .blog-post .read-more:hover {
-            color: #0b2a3b;
-            transform: translateX(4px);
-        }
-
+        .blog-post h3 { font-size: 1.5rem; font-weight: 600; color: #1e2f3b; padding-right: 50px; }
+        .blog-post h3 a { color: #1e2f3b; text-decoration: none; transition: 0.2s; }
+        .blog-post h3 a:hover { color: #f5b042; text-decoration: underline; }
+        .blog-post .meta { color: #5f6f7a; font-size: 0.85rem; margin: 0.4rem 0 0.6rem; display: flex; gap: 16px; flex-wrap: wrap; }
+        .blog-post .meta i { margin-right: 4px; color: #f5b042; }
+        .blog-post .excerpt { font-size: 1rem; line-height: 1.5; color: #2f3f4a; }
+        .blog-post .post-tag { background: #e3d9cb; padding: 0.1rem 0.8rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; color: #1e2f3b; display: inline-block; margin-top: 0.4rem; }
+        .blog-post .read-more { display: inline-block; margin-top: 0.6rem; color: #f5b042; font-weight: 600; text-decoration: none; transition: 0.2s; }
+        .blog-post .read-more:hover { color: #0b2a3b; transform: translateX(4px); }
+        .blog-post .post-actions { display: flex; gap: 12px; margin-top: 0.6rem; flex-wrap: wrap; align-items: center; }
+        .blog-post .post-actions button { background: none; border: none; cursor: pointer; font-size: 0.9rem; color: #5f6f7a; transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .blog-post .post-actions button:hover { color: #f5b042; }
+        .blog-post .post-actions .like-btn.liked { color: #e74c3c; }
         .delete-post-btn {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: #b13e3e;
-            color: white;
-            border: none;
-            border-radius: 40px;
-            padding: 0.4rem 1rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 3px 0 #6f2626;
+            position: absolute; top: 1rem; right: 1rem; background: #b13e3e; color: white; border: none;
+            border-radius: 40px; padding: 0.3rem 0.8rem; font-weight: 600; font-size: 0.8rem; cursor: pointer;
+            transition: 0.2s; display: flex; align-items: center; gap: 4px; box-shadow: 0 2px 0 #6f2626;
         }
-
-        .delete-post-btn:hover {
-            background: #c44a4a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #6f2626;
+        .delete-post-btn:hover { background: #c44a4a; transform: translateY(-2px); box-shadow: 0 4px 0 #6f2626; }
+        .edit-post-btn {
+            position: absolute; top: 1rem; right: 5.5rem; background: #2a6b8a; color: white; border: none;
+            border-radius: 40px; padding: 0.3rem 0.8rem; font-weight: 600; font-size: 0.8rem; cursor: pointer;
+            transition: 0.2s; display: flex; align-items: center; gap: 4px; box-shadow: 0 2px 0 #1a4a5a;
         }
+        .edit-post-btn:hover { background: #3a7b9a; transform: translateY(-2px); box-shadow: 0 4px 0 #1a4a5a; }
 
-        .delete-post-btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0 #6f2626;
-        }
-
-        /* ----- SINGLE POST ----- */
         .single-post-page {
-            background: white;
-            padding: 3rem 3rem 2.5rem;
-            border-radius: 48px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-            border-left: 8px solid #f5b042;
-            max-width: 850px;
-            margin: 0 auto;
+            background: white; padding: 2rem 2rem 1.8rem; border-radius: 40px; box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            border-left: 8px solid #f5b042; max-width: 820px; margin: 0 auto;
         }
+        .single-post-page h1 { font-size: 2.4rem; font-weight: 700; color: #1e2f3b; margin-bottom: 0.5rem; }
+        .single-post-page .meta { color: #5f6f7a; font-size: 0.95rem; margin-bottom: 1.5rem; display: flex; gap: 20px; flex-wrap: wrap; border-bottom: 1px solid #ede6db; padding-bottom: 0.8rem; }
+        .single-post-page .meta i { color: #f5b042; margin-right: 4px; }
+        .single-post-page .full-content { font-size: 1.1rem; line-height: 1.7; color: #2f3f4a; white-space: pre-wrap; }
+        .single-post-page .action-bar { display: flex; flex-wrap: wrap; align-items: center; margin-top: 1.5rem; gap: 10px; }
+        .single-post-page .back-link { display: inline-block; background: #0b2a3b; color: #f5b042; padding: 0.5rem 1.5rem; border-radius: 60px; text-decoration: none; font-weight: 600; transition: 0.2s; font-size: 0.95rem; }
+        .single-post-page .back-link:hover { background: #f5b042; color: #0b2a3b; }
+        .single-post-page .delete-btn-single { background: #b13e3e; color: white; border: none; border-radius: 60px; padding: 0.5rem 1.5rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 0 #6f2626; }
+        .single-post-page .delete-btn-single:hover { background: #c44a4a; transform: translateY(-2px); box-shadow: 0 4px 0 #6f2626; }
+        .single-post-page .edit-btn-single { background: #2a6b8a; color: white; border: none; border-radius: 60px; padding: 0.5rem 1.5rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 0 #1a4a5a; }
+        .single-post-page .edit-btn-single:hover { background: #3a7b9a; transform: translateY(-2px); box-shadow: 0 4px 0 #1a4a5a; }
 
-        .single-post-page h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #1e2f3b;
-            margin-bottom: 0.5rem;
-        }
-
-        .single-post-page .meta {
-            color: #5f6f7a;
-            font-size: 1rem;
-            margin-bottom: 1.8rem;
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            border-bottom: 1px solid #ede6db;
-            padding-bottom: 1rem;
-        }
-
-        .single-post-page .meta i {
-            color: #f5b042;
-            margin-right: 6px;
-        }
-
-        .single-post-page .full-content {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #2f3f4a;
-            white-space: pre-wrap;
-        }
-
-        .single-post-page .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            background: #0b2a3b;
-            color: #f5b042;
-            padding: 0.6rem 1.8rem;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-
-        .single-post-page .back-link:hover {
-            background: #f5b042;
-            color: #0b2a3b;
-        }
-
-        .single-post-page .delete-btn-single {
-            background: #b13e3e;
-            color: white;
-            border: none;
-            border-radius: 60px;
-            padding: 0.6rem 1.8rem;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-left: 1rem;
-            box-shadow: 0 3px 0 #6f2626;
-        }
-
-        .single-post-page .delete-btn-single:hover {
-            background: #c44a4a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #6f2626;
-        }
-
-        .single-post-page .action-bar {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            margin-top: 2rem;
-            gap: 10px;
-        }
-
-        /* ----- ADMIN PANEL (login + CMS) ----- */
+        /* Admin & User Panels */
         .admin-panel {
-            background: #1f3140;
-            padding: 2rem 2rem 2.2rem;
-            border-radius: 48px;
-            margin-top: 2.8rem;
-            color: #f0ece4;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-            border: 1px solid #f5b04260;
+            background: #1f3140; padding: 1.8rem; border-radius: 40px; margin-top: 1.5rem;
+            color: #f0ece4; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 1px solid #f5b04260;
         }
+        .admin-panel h3 { font-size: 1.6rem; display: flex; align-items: center; gap: 12px; color: #f5b042; margin-bottom: 1.2rem; }
+        .admin-panel h3 i { font-size: 1.6rem; }
+        .admin-form { display: flex; flex-direction: column; gap: 1rem; }
+        .form-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .form-group { flex: 1 1 180px; display: flex; flex-direction: column; gap: 4px; }
+        .form-group label { font-weight: 500; color: #d6d0c4; font-size: 0.9rem; }
+        .form-group input, .form-group textarea { padding: 0.6rem 0.8rem; border: none; border-radius: 40px; background: #2b4052; color: #f0f0e8; font-size: 0.95rem; outline: 2px solid transparent; transition: 0.2s; }
+        .form-group input:focus, .form-group textarea:focus { outline: 2px solid #f5b042; background: #1f3140; }
+        .form-group textarea { border-radius: 20px; resize: vertical; min-height: 60px; }
+        .admin-btn { background: #f5b042; border: none; color: #0b2a3b; font-weight: 700; font-size: 1rem; padding: 0.6rem 1.5rem; border-radius: 60px; cursor: pointer; transition: 0.25s; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 3px 0 #b97d2a; }
+        .admin-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #b97d2a; background: #fcc45a; }
+        .admin-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #b97d2a; }
+        .delete-btn { background: #b13e3e; color: white; box-shadow: 0 3px 0 #6f2626; }
+        .delete-btn:hover { background: #c44a4a; box-shadow: 0 6px 0 #6f2626; }
+        .admin-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 0.4rem; }
 
-        .admin-panel h3 {
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            color: #f5b042;
-            margin-bottom: 1.6rem;
-        }
-
-        .admin-panel h3 i {
-            font-size: 2rem;
-        }
-
-        .admin-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-        }
-
-        .form-group {
-            flex: 1 1 200px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .form-group label {
-            font-weight: 500;
-            color: #d6d0c4;
-            letter-spacing: 0.3px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 40px;
-            background: #2b4052;
-            color: #f0f0e8;
-            font-size: 1rem;
-            outline: 2px solid transparent;
-            transition: 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: 2px solid #f5b042;
-            background: #1f3140;
-        }
-
-        .form-group textarea {
-            border-radius: 24px;
-            resize: vertical;
-            min-height: 70px;
-        }
-
-        .admin-btn {
-            background: #f5b042;
-            border: none;
-            color: #0b2a3b;
-            font-weight: 700;
-            font-size: 1.2rem;
-            padding: 0.8rem 2rem;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: 0.25s;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            align-self: flex-start;
-            margin-top: 0.4rem;
-            box-shadow: 0 4px 0 #b97d2a;
-        }
-
-        .admin-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 0 #b97d2a;
-            background: #fcc45a;
-        }
-
-        .admin-btn:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 #b97d2a;
-        }
-
-        .delete-btn {
-            background: #b13e3e;
-            color: white;
-            box-shadow: 0 4px 0 #6f2626;
-            margin-left: 10px;
-        }
-
-        .delete-btn:hover {
-            background: #c44a4a;
-            box-shadow: 0 8px 0 #6f2626;
-        }
-
-        .admin-actions {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 10px;
-            margin-top: 0.4rem;
-        }
-
-        /* ----- SIMPLE LOGIN FORM (embedded) ----- */
+        /* Login Card */
         .login-card {
-            background: #1a2639;
-            border-radius: 2.5rem;
-            padding: 2.8rem 2.5rem;
-            max-width: 440px;
-            width: 100%;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            margin: 0 auto 2rem;
+            background: #1a2639; border-radius: 2rem; padding: 2rem; max-width: 400px; width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.06); margin: 0 auto 1.5rem;
         }
+        .login-card h2 { color: #f5b042; font-size: 1.8rem; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 8px; }
+        .login-card .subtitle { color: #b0c4ff; margin-bottom: 1.5rem; border-left: 3px solid #6c8cff; padding-left: 0.8rem; opacity: 0.8; font-size: 0.9rem; }
+        .login-card .input-group { margin-bottom: 1rem; }
+        .login-card .input-group label { display: block; color: #cfddff; font-weight: 500; margin-bottom: 0.3rem; font-size: 0.85rem; }
+        .login-card .input-group input { width: 100%; padding: 0.6rem 0.8rem; border-radius: 60px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.06); color: #f0f4ff; font-size: 0.95rem; outline: none; transition: 0.2s; }
+        .login-card .input-group input:focus { border-color: #f5b042; box-shadow: 0 0 0 3px rgba(245,176,66,0.15); }
+        .login-card .login-btn { width: 100%; background: linear-gradient(135deg, #f5b042, #e09d30); border: none; padding: 0.7rem; border-radius: 60px; font-size: 1rem; font-weight: 600; color: #0b2a3b; cursor: pointer; transition: 0.25s; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .login-card .login-btn:hover { transform: scale(1.01); box-shadow: 0 8px 20px rgba(245,176,66,0.3); }
+        .login-card .alert { margin-top: 0.8rem; padding: 0.5rem 0.8rem; border-radius: 40px; background: rgba(255,80,80,0.1); border-left: 4px solid #ff6b6b; color: #ffb3b3; font-size: 0.85rem; display: none; align-items: center; gap: 0.5rem; }
+        .login-card .alert.show { display: flex; }
+        .login-card .demo-hint { margin-top: 1rem; padding: 0.6rem 0.8rem; background: rgba(108,140,255,0.06); border-radius: 60px; border: 1px solid rgba(245,176,66,0.15); display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap; color: #d4c8b0; font-size: 0.8rem; }
+        .login-card .demo-hint kbd { background: rgba(255,255,255,0.06); padding: 0.1rem 0.6rem; border-radius: 30px; color: #f5b042; border: 1px solid #31415e; font-size: 0.75rem; }
+        .login-status { color: #b0c4ff; padding: 0.4rem 0.8rem; background: #0f1a2b; border-radius: 40px; border-left: 3px solid #f5b042; margin-bottom: 1rem; font-size: 0.9rem; }
 
-        .login-card h2 {
-            color: #f5b042;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        /* Toast */
+        .toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; gap: 8px; }
+        .toast { padding: 0.8rem 1.2rem; border-radius: 12px; color: white; font-weight: 500; box-shadow: 0 6px 20px rgba(0,0,0,0.2); animation: slideIn 0.3s ease; min-width: 200px; }
+        .toast.success { background: #27ae60; }
+        .toast.error { background: #e74c3c; }
+        .toast.info { background: #2980b9; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
 
-        .login-card h2 i {
-            color: #6c8cff;
-        }
+        .footer-note { text-align: center; padding: 1rem 0 0.3rem; color: #5f6f7a; border-top: 1px solid #ddd6ca; margin-top: 1.5rem; font-size: 0.9rem; }
+        .dark-toggle { background: none; border: none; color: #f5b042; font-size: 1.2rem; cursor: pointer; padding: 0.2rem 0.6rem; border-radius: 40px; transition: 0.2s; }
+        .dark-toggle:hover { background: #f5b04220; }
 
-        .login-card .subtitle {
-            color: #b0c4ff;
-            margin-bottom: 2rem;
-            border-left: 3px solid #6c8cff;
-            padding-left: 1rem;
-            opacity: 0.8;
-        }
+        .loading-shimmer { background: linear-gradient(90deg, #e0dcd4 25%, #f0ece4 50%, #e0dcd4 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 12px; height: 80px; margin-bottom: 1rem; }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-        .login-card .input-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .login-card .input-group label {
-            display: block;
-            color: #cfddff;
-            font-weight: 500;
-            margin-bottom: 0.4rem;
-            font-size: 0.9rem;
-        }
-
-        .login-card .input-group input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border-radius: 60px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.06);
-            color: #f0f4ff;
-            font-size: 1rem;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        .login-card .input-group input:focus {
-            border-color: #6c8cff;
-            box-shadow: 0 0 0 4px rgba(108, 140, 255, 0.15);
-        }
-
-        .login-card .login-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #6c8cff, #4f6ef7);
-            border: none;
-            padding: 0.9rem;
-            border-radius: 60px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #fff;
-            cursor: pointer;
-            transition: 0.25s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-        }
-
-        .login-card .login-btn:hover {
-            transform: scale(1.01);
-            box-shadow: 0 8px 24px rgba(76, 110, 245, 0.4);
-        }
-
-        .login-card .login-btn:active {
-            transform: scale(0.97);
-        }
-
-        .login-card .alert {
-            margin-top: 1rem;
-            padding: 0.7rem 1rem;
-            border-radius: 40px;
-            background: rgba(255, 80, 80, 0.1);
-            border-left: 4px solid #ff6b6b;
-            color: #ffb3b3;
-            font-size: 0.9rem;
-            display: none;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .login-card .alert.show {
-            display: flex;
-        }
-
-        .login-card .demo-hint {
-            margin-top: 1.5rem;
-            padding: 0.8rem 1rem;
-            background: rgba(108, 140, 255, 0.07);
-            border-radius: 60px;
-            border: 1px solid rgba(108, 140, 255, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            color: #a0b6f0;
-            font-size: 0.85rem;
-        }
-
-        .login-card .demo-hint kbd {
-            background: rgba(255,255,255,0.06);
-            padding: 0.2rem 0.9rem;
-            border-radius: 30px;
-            color: #d4e0ff;
-            border: 1px solid #31415e;
-            font-size: 0.8rem;
-        }
-
-        .login-status {
-            color: #b0c4ff;
-            padding: 0.6rem 1rem;
-            background: #0f1a2b;
-            border-radius: 40px;
-            border-left: 3px solid #6c8cff;
-            margin-bottom: 1.5rem;
-        }
-
-        /* footer */
-        .footer-note {
-            text-align: center;
-            padding: 1.5rem 0 0.5rem;
-            color: #5f6f7a;
-            border-top: 1px solid #ddd6ca;
-            margin-top: 2rem;
-            font-weight: 400;
-        }
-
-        /* responsive */
-        @media (max-width: 700px) {
-            .navbar { flex-direction: column; gap: 12px; }
-            .nav-links { justify-content: center; gap: 0.8rem; }
-            .hero-text h1 { font-size: 2.4rem; }
-            .delete-post-btn { position: static; margin-top: 0.8rem; align-self: flex-start; }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; gap: 0.5rem; padding-top: 0.8rem; border-top: 1px solid #f5b04240; }
+            .nav-links.open { display: flex; }
+            .nav-btn { width: 100%; justify-content: center; padding: 0.5rem; }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-emoji { font-size: 3rem; }
+            .blog-header { flex-direction: column; align-items: stretch; }
+            .blog-controls { flex-direction: column; align-items: stretch; }
+            .date-filter, .search-box { width: 100%; justify-content: center; }
+            .search-box input { width: 100%; }
+            .delete-post-btn, .edit-post-btn { position: static; margin-top: 0.4rem; align-self: flex-start; }
             .blog-post h3 { padding-right: 0; }
-            .single-post-page { padding: 1.5rem; }
-            .single-post-page h1 { font-size: 2rem; }
-            .login-card { padding: 1.8rem; }
+            .single-post-page { padding: 1.2rem; }
+            .single-post-page h1 { font-size: 1.8rem; }
+            .login-card { padding: 1.2rem; }
+            .admin-panel { padding: 1.2rem; }
+            .form-row { flex-direction: column; }
+            .admin-actions { flex-direction: column; align-items: stretch; }
+            .admin-actions .admin-btn { align-self: stretch; justify-content: center; }
+            .toast-container { left: 20px; right: 20px; bottom: 10px; }
+            .toast { min-width: unset; width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <nav class="navbar">
-        <div class="logo-area">
-            <i class="fas fa-sun logo-icon"></i>
-            <span class="logo-text">Wakeup India</span>
-        </div>
-        <div class="nav-links">
-            <button class="nav-btn active" data-page="home"><i class="fas fa-home"></i> Home</button>
-            <button class="nav-btn" data-page="blog"><i class="fas fa-blog"></i> Blog</button>
-            <button class="nav-btn" data-page="admin"><i class="fas fa-user-shield"></i> Admin <span class="admin-badge">login</span></button>
-        </div>
-    </nav>
+<nav class="navbar">
+    <div class="logo-area">
+        <i class="fas fa-sun logo-icon"></i>
+        <span class="logo-text">Wakeup India</span>
+    </div>
+    <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+    <div class="nav-links" id="navLinks">
+        <button class="nav-btn active" data-page="home"><i class="fas fa-home"></i> Home</button>
+        <button class="nav-btn" data-page="blog"><i class="fas fa-blog"></i> Blog</button>
+        <button class="nav-btn" data-page="admin"><i class="fas fa-user-shield"></i> Admin</button>
+        <button class="nav-btn" data-page="user"><i class="fas fa-user"></i> User</button>
+        <button class="dark-toggle" id="darkToggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+        <span id="userDisplay" style="color:#f5b042; font-weight:500; display:none; font-size:0.9rem;"><i class="fas fa-user-circle"></i> <span id="currentUserLabel">Guest</span></span>
+    </div>
+</nav>
 
-    <!-- PAGE CONTAINER -->
-    <div class="page-container">
+<div class="page-container">
 
-        <!-- HOME -->
-        <div id="page-home" class="page active-page">
-            <div class="home-hero">
-                <div class="hero-text">
-                    <h1><i class="fas fa-flag"></i> Wakeup India</h1>
-                    <p>Let's ignite the dawn &bull; Rise together</p>
-                    <div style="margin-top: 1.2rem; display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="background: #0b2a3b; color: #f5b042; padding: 0.4rem 1.4rem; border-radius: 40px; font-weight: 600;">#RiseTogether</span>
-                        <span style="background: #f5b042; color: #0b2a3b; padding: 0.4rem 1.4rem; border-radius: 40px; font-weight: 600;">🇮🇳 Awaken</span>
-                    </div>
-                </div>
-                <div class="hero-emoji">🚀</div>
-            </div>
-
-            <div style="background: #dfd5c7; border-radius: 40px; padding: 1.8rem; margin-top: 0.8rem;">
-                <p style="font-size: 1.1rem; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                    <i class="fas fa-quote-left" style="color: #f5b042; font-size: 2rem;"></i>
-                    <span><strong>“Be the change that you wish to see in India.”</strong> — Every post, every voice matters.</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- BLOG -->
-        <div id="page-blog" class="page">
-            <div class="blog-header">
-                <h2><i class="fas fa-pen-fancy"></i> Blog · Wakeup India</h2>
-                <span style="background: #0b2a3b; color: #f5b042; padding: 0.3rem 1.2rem; border-radius: 60px; font-weight: 500;"><i class="far fa-clock"></i> daily posts</span>
-            </div>
-            <div id="blog-list"></div>
-            <div style="margin-top: 2rem; text-align: right; font-style: italic; color: #4f5f6a;">
-                <i class="fas fa-arrow-up"></i> Admin panel to add daily post
-            </div>
-        </div>
-
-        <!-- SINGLE POST -->
-        <div id="page-single" class="page">
-            <div id="single-post-container"></div>
-        </div>
-
-        <!-- ADMIN (login + CMS) -->
-        <div id="page-admin" class="page">
-            <!-- Login Card (simple version) -->
-            <div class="login-card" id="adminLoginCard">
-                <h2><i class="fas fa-shield-alt"></i> Admin Login</h2>
-                <p class="subtitle">🔐 secure access only</p>
-                <div id="loginStatus" class="login-status"><i class="fas fa-info-circle"></i> Please log in to manage posts</div>
-
-                <form id="loginForm" autocomplete="on" novalidate>
-                    <div class="input-group">
-                        <label for="username"><i class="fas fa-user"></i> Username</label>
-                        <input type="text" id="username" placeholder="admin" value="admin" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="password"><i class="fas fa-lock"></i> Password</label>
-                        <input type="password" id="password" placeholder="••••••••" value="admin123" required>
-                    </div>
-
-                    <button type="submit" class="login-btn" id="loginBtn">
-                        <i class="fas fa-sign-in-alt"></i> Log in
-                    </button>
-
-                    <div id="loginAlert" class="alert">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <span id="alertMessage">Invalid credentials</span>
-                    </div>
-                </form>
-
-                <div class="demo-hint">
-                    <i class="fas fa-info-circle"></i>
-                    <span>Demo: </span>
-                    <kbd>admin</kbd> <span style="color:#5f7bb0;">/</span> <kbd>admin123</kbd>
-                    <span style="opacity:0.5; margin-left: 0.2rem;">(click login)</span>
+    <!-- HOME -->
+    <div id="page-home" class="page active-page">
+        <div class="home-hero">
+            <div class="hero-text">
+                <h1><i class="fas fa-flag"></i> Wakeup India</h1>
+                <p>Let's ignite the dawn &bull; Rise together</p>
+                <div style="margin-top: 0.8rem; display: flex; gap: 8px; flex-wrap: wrap;">
+                    <span style="background: #0b2a3b; color: #f5b042; padding: 0.3rem 1.2rem; border-radius: 40px; font-weight: 600; font-size:0.85rem;">#RiseTogether</span>
+                    <span style="background: #f5b042; color: #0b2a3b; padding: 0.3rem 1.2rem; border-radius: 40px; font-weight: 600; font-size:0.85rem;">🇮🇳 Awaken</span>
                 </div>
             </div>
-
-            <!-- CMS Panel (hidden until login) -->
-            <div id="adminCmsPanel" class="admin-panel" style="display: none;">
-                <h3><i class="fas fa-lock-open"></i> Admin · Daily Post</h3>
-                <form id="adminPostForm" class="admin-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="postTitle"><i class="fas fa-heading"></i> Title</label>
-                            <input type="text" id="postTitle" placeholder="Post title..." required />
-                        </div>
-                        <div class="form-group">
-                            <label for="postAuthor"><i class="fas fa-user"></i> Author</label>
-                            <input type="text" id="postAuthor" placeholder="Your name" value="Wakeup India" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="postContent"><i class="fas fa-align-left"></i> Content</label>
-                        <textarea id="postContent" rows="3" placeholder="Write your daily post..." required></textarea>
-                    </div>
-                    <div class="admin-actions">
-                        <button type="submit" class="admin-btn"><i class="fas fa-plus-circle"></i> Publish Post</button>
-                        <button type="button" id="clearPostsBtn" class="admin-btn delete-btn"><i class="fas fa-trash-alt"></i> Clear All</button>
-                    </div>
-                </form>
-                <p style="margin-top: 1.2rem; color: #b6aba0; font-size: 0.9rem;">
-                    <i class="fas fa-info-circle"></i> Posts appear instantly on the Blog page.
-                </p>
-            </div>
+            <div class="hero-emoji">🚀</div>
         </div>
-
-        <div class="footer-note">
-            <i class="fas fa-sun" style="color: #f5b042;"></i> Wakeup India · Rise and inspire
+        <div style="background: #dfd5c7; border-radius: 32px; padding: 1.2rem; margin-top: 0.5rem;">
+            <p style="font-size: 1rem; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <i class="fas fa-quote-left" style="color: #f5b042; font-size: 1.5rem;"></i>
+                <span><strong>“Be the change that you wish to see in India.”</strong> — Every post, every voice matters.</span>
+            </p>
+        </div>
+        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; justify-content: center;">
+            <div style="background: #e9dfd1; padding: 1rem 1.5rem; border-radius: 24px; text-align: center; flex:1; min-width:120px;">
+                <div style="font-size:2rem; color:#f5b042;">📰</div>
+                <div id="totalPostsCount">0</div>
+                <div style="font-size:0.8rem; color:#5f6f7a;">Total Posts</div>
+            </div>
+            <div style="background: #e9dfd1; padding: 1rem 1.5rem; border-radius: 24px; text-align: center; flex:1; min-width:120px;">
+                <div style="font-size:2rem; color:#f5b042;">❤️</div>
+                <div id="totalLikesCount">0</div>
+                <div style="font-size:0.8rem; color:#5f6f7a;">Total Likes</div>
+            </div>
+            <div style="background: #e9dfd1; padding: 1rem 1.5rem; border-radius: 24px; text-align: center; flex:1; min-width:120px;">
+                <div style="font-size:2rem; color:#f5b042;">👤</div>
+                <div id="totalUsersCount">0</div>
+                <div style="font-size:0.8rem; color:#5f6f7a;">Users</div>
+            </div>
         </div>
     </div>
 
-    <script>
-        (function() {
-            "use strict";
+    <!-- BLOG -->
+    <div id="page-blog" class="page">
+        <div class="blog-header">
+            <h2><i class="fas fa-pen-fancy"></i> Blog</h2>
+            <div class="blog-controls">
+                <div class="date-filter">
+                    <label><i class="fas fa-calendar-day"></i></label>
+                    <input type="date" id="filterDate" />
+                    <button id="applyFilterBtn"><i class="fas fa-filter"></i></button>
+                    <button id="todayFilterBtn" style="background:#f5b042; color:#0b2a3b;">Today</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search..." />
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="blog-list"></div>
+        <div style="margin-top: 1.5rem; text-align: right; font-style: italic; color: #4f5f6a; font-size:0.9rem;">
+            <i class="fas fa-arrow-up"></i> Login as user to post
+        </div>
+    </div>
 
-            // ----- DATA (localStorage) -----
-            const STORAGE_KEY = 'wakeupIndiaPosts';
-            let posts = [];
+    <!-- SINGLE POST -->
+    <div id="page-single" class="page">
+        <div id="single-post-container"></div>
+    </div>
 
-            function loadPosts() {
-                const stored = localStorage.getItem(STORAGE_KEY);
-                if (stored) {
-                    try { posts = JSON.parse(stored); } catch(e) { posts = []; }
-                } else {
-                    posts = [
-                        { 
-                            id: Date.now() - 100000, 
-                            title: 'Morning Inspiration: The Power of a New Day', 
-                            author: 'Wakeup India', 
-                            content: 'Every day is a new opportunity to make a difference. Let\'s rise together and build a brighter future. The morning sun brings hope and the promise of change. Wake up India, it\'s time to shine.\n\nThis is a longer post to demonstrate the separate page view. You can write detailed articles, share stories, and inspire the community. The separate page makes it easy to read long-form content without clutter.',
-                            date: new Date(Date.now() - 86400000).toLocaleDateString('en-IN') 
-                        },
-                        { 
-                            id: Date.now() - 200000, 
-                            title: 'Youth for Change: Shaping India\'s Tomorrow', 
-                            author: 'Admin', 
-                            content: 'Today we discuss the power of youth in shaping India\'s future. Be the voice of transformation. Young minds are the architects of a new India.\n\nThis post explores various initiatives, success stories, and the role of technology in empowering the next generation. Read the full article to get inspired and join the movement.',
-                            date: new Date().toLocaleDateString('en-IN') 
-                        }
-                    ];
-                    savePosts();
-                }
-                renderBlog();
-            }
-
-            function savePosts() {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
-                renderBlog();
-            }
-
-            function renderBlog() {
-                const container = document.getElementById('blog-list');
-                if (!container) return;
-                if (posts.length === 0) {
-                    container.innerHTML = `<div class="blog-post" style="border-left-color: #aaa; background: #f2ede6;">
-                        <h3>No posts yet</h3>
-                        <p>Use the Admin panel to publish your daily post.</p>
-                    </div>`;
-                    return;
-                }
-                let html = '';
-                const sorted = [...posts].reverse();
-                for (let p of sorted) {
-                    const dateStr = p.date || new Date(p.id || Date.now()).toLocaleDateString('en-IN');
-                    const excerpt = p.content.length > 120 ? p.content.substring(0, 120) + '...' : p.content;
-                    html += `
-                        <div class="blog-post" data-post-id="${p.id}">
-                            <h3><a href="#" class="post-link" data-id="${p.id}">${escapeHtml(p.title)}</a></h3>
-                            <div class="meta">
-                                <span><i class="fas fa-user-edit"></i> ${escapeHtml(p.author || 'Wakeup India')}</span>
-                                <span><i class="far fa-calendar-alt"></i> ${escapeHtml(dateStr)}</span>
-                            </div>
-                            <div class="excerpt">${escapeHtml(excerpt)}</div>
-                            <a href="#" class="read-more post-link" data-id="${p.id}">Read full post <i class="fas fa-arrow-right"></i></a>
-                            <span class="post-tag"><i class="fas fa-tag"></i> daily</span>
-                            <button class="delete-post-btn" data-id="${p.id}"><i class="fas fa-trash-alt"></i> Delete</button>
+    <!-- ADMIN PANEL with login -->
+    <div id="page-admin" class="page">
+        <div style="max-width:480px; margin:0 auto;">
+            <div class="login-card" id="adminLoginCard">
+                <h2><i class="fas fa-user-shield"></i> Admin Login</h2>
+                <p class="subtitle">🔐 Secure access</p>
+                <div id="adminLoginStatus" class="login-status"><i class="fas fa-info-circle"></i> Please log in as admin</div>
+                <form id="adminLoginForm">
+                    <div class="input-group">
+                        <label><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="adminName" value="admin" required>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="adminPass" value="admin123" required>
+                    </div>
+                    <button type="submit" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</button>
+                    <div id="adminLoginAlert" class="alert"><i class="fas fa-exclamation-circle"></i><span id="adminAlertMsg">Invalid</span></div>
+                </form>
+                <div class="demo-hint"><i class="fas fa-info-circle"></i> </div>
+            </div>
+            <div id="adminCmsPanel" class="admin-panel" style="display:none;">
+                <h3><i class="fas fa-crown"></i> Admin Panel</h3>
+                <p style="color:#b0c4ff; margin-bottom:1rem; font-size:0.9rem;"><i class="fas fa-info-circle"></i> Full control: create, edit, delete any post.</p>
+                <form id="adminPostForm" class="admin-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" id="adminTitle" placeholder="Title" required />
                         </div>
-                    `;
-                }
-                container.innerHTML = html;
-
-                document.querySelectorAll('.post-link').forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const id = Number(this.dataset.id);
-                        showSinglePost(id);
-                    });
-                });
-
-                document.querySelectorAll('.delete-post-btn').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const id = Number(this.dataset.id);
-                        deletePostById(id);
-                    });
-                });
-            }
-
-            function showSinglePost(id) {
-                const post = posts.find(p => p.id === id);
-                if (!post) {
-                    alert('Post not found.');
-                    return;
-                }
-                const container = document.getElementById('single-post-container');
-                const dateStr = post.date || new Date(post.id || Date.now()).toLocaleDateString('en-IN');
-                container.innerHTML = `
-                    <div class="single-post-page">
-                        <h1>${escapeHtml(post.title)}</h1>
-                        <div class="meta">
-                            <span><i class="fas fa-user-edit"></i> ${escapeHtml(post.author || 'Wakeup India')}</span>
-                            <span><i class="far fa-calendar-alt"></i> ${escapeHtml(dateStr)}</span>
-                        </div>
-                        <div class="full-content">${escapeHtml(post.content)}</div>
-                        <div class="action-bar">
-                            <a href="#" class="back-link" id="backToBlog"><i class="fas fa-arrow-left"></i> Back to Blog</a>
-                            <button class="delete-btn-single" data-id="${post.id}"><i class="fas fa-trash-alt"></i> Delete Post</button>
+                        <div class="form-group">
+                            <label>Author</label>
+                            <input type="text" id="adminAuthor" value="Admin" />
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea id="adminContent" rows="3" placeholder="Write your post..." required></textarea>
+                    </div>
+                    <div class="admin-actions">
+                        <button type="submit" class="admin-btn"><i class="fas fa-plus-circle"></i> Publish</button>
+                        <button type="button" id="adminClearAll" class="admin-btn delete-btn"><i class="fas fa-trash-alt"></i> Clear All</button>
+                        <button type="button" id="adminLogoutBtn" class="admin-btn" style="background:#4a5f6f; box-shadow:0 3px 0 #2a3f4f;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    </div>
+                </form>
+                <div style="margin-top:1rem; color:#b6aba0; font-size:0.85rem;">
+                    <i class="fas fa-database"></i> Posts stored locally.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- USER LOGIN & POST -->
+    <div id="page-user" class="page">
+        <div style="max-width:480px; margin:0 auto;">
+            <div class="login-card" id="userLoginCard">
+                <h2><i class="fas fa-user-circle"></i> User Login</h2>
+                <p class="subtitle">🔐 Create & manage your posts</p>
+                <div id="userLoginStatus" class="login-status"><i class="fas fa-info-circle"></i> Please log in</div>
+                <form id="userLoginForm">
+                    <div class="input-group">
+                        <label><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="userName" value="user1" required>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="userPass" value="user123" required>
+                    </div>
+                    <button type="submit" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</button>
+                    <div id="userLoginAlert" class="alert"><i class="fas fa-exclamation-circle"></i><span id="userAlertMsg">Invalid</span></div>
+                </form>
+                <div class="demo-hint"><i class="fas fa-info-circle"></i> 
+            </div>
+            <div id="userCmsPanel" class="admin-panel" style="display:none;">
+                <h3><i class="fas fa-lock-open"></i> <span id="userPanelLabel">User</span> · Create Post</h3>
+                <form id="userPostForm" class="admin-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" id="userTitle" placeholder="Title" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Author</label>
+                            <input type="text" id="userAuthor" value="User" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea id="userContent" rows="3" placeholder="Write your post..." required></textarea>
+                    </div>
+                    <div class="admin-actions">
+                        <button type="submit" class="admin-btn"><i class="fas fa-plus-circle"></i> Publish</button>
+                        <button type="button" id="userLogoutBtn" class="admin-btn" style="background:#4a5f6f; box-shadow:0 3px 0 #2a3f4f;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    </div>
+                </form>
+                <p style="margin-top:0.8rem; color:#b6aba0; font-size:0.85rem;"><i class="fas fa-info-circle"></i> You can delete only your own posts.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-sun" style="color: #f5b042;"></i> Wakeup India · Rise and inspire
+    </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+    (function() {
+        "use strict";
+
+        // ----- DATA (localStorage) -----
+        const STORAGE_KEY = 'wakeupIndiaPosts';
+        const USERS_KEY = 'wakeupUsers';
+        let posts = [];
+        let currentUser = null;
+        let currentAdmin = null;
+        let editingPostId = null;
+
+        // ----- DOM refs -----
+        const blogList = document.getElementById('blog-list');
+        const singleContainer = document.getElementById('single-post-container');
+        const filterDate = document.getElementById('filterDate');
+        const applyFilterBtn = document.getElementById('applyFilterBtn');
+        const todayFilterBtn = document.getElementById('todayFilterBtn');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const totalPostsCount = document.getElementById('totalPostsCount');
+        const totalLikesCount = document.getElementById('totalLikesCount');
+        const totalUsersCount = document.getElementById('totalUsersCount');
+
+        // Admin
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        const adminLoginCard = document.getElementById('adminLoginCard');
+        const adminCmsPanel = document.getElementById('adminCmsPanel');
+        const adminLoginStatus = document.getElementById('adminLoginStatus');
+        const adminLoginAlert = document.getElementById('adminLoginAlert');
+        const adminAlertMsg = document.getElementById('adminAlertMsg');
+        const adminPostForm = document.getElementById('adminPostForm');
+        const adminTitle = document.getElementById('adminTitle');
+        const adminAuthor = document.getElementById('adminAuthor');
+        const adminContent = document.getElementById('adminContent');
+        const adminClearAll = document.getElementById('adminClearAll');
+        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+
+        // User
+        const userLoginForm = document.getElementById('userLoginForm');
+        const userLoginStatus = document.getElementById('userLoginStatus');
+        const userLoginAlert = document.getElementById('userLoginAlert');
+        const userAlertMsg = document.getElementById('userAlertMsg');
+        const userCmsPanel = document.getElementById('userCmsPanel');
+        const userLoginCard = document.getElementById('userLoginCard');
+        const userPanelLabel = document.getElementById('userPanelLabel');
+        const userDisplay = document.getElementById('userDisplay');
+        const currentUserLabel = document.getElementById('currentUserLabel');
+        const userPostForm = document.getElementById('userPostForm');
+        const userTitle = document.getElementById('userTitle');
+        const userAuthor = document.getElementById('userAuthor');
+        const userContent = document.getElementById('userContent');
+        const userLogoutBtn = document.getElementById('userLogoutBtn');
+
+        // Hamburger
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navLinks = document.getElementById('navLinks');
+        hamburgerBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+        // Dark mode
+        const darkToggle = document.getElementById('darkToggle');
+        darkToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            darkToggle.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('wakeupDarkMode', document.body.classList.contains('dark-mode'));
+        });
+        if (localStorage.getItem('wakeupDarkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Toast
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = message;
+            container.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 3000);
+        }
+
+        // ----- helpers -----
+        function escapeHtml(text) {
+            if (!text) return '';
+            const map = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'};
+            return String(text).replace(/[&<>"']/g, m => map[m]);
+        }
+
+        function getTodayStr() {
+            const d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const parts = dateStr.split('-');
+            if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
+            return dateStr;
+        }
+
+        function showAdminAlert(msg) {
+            adminAlertMsg.textContent = msg;
+            adminLoginAlert.classList.add('show');
+            setTimeout(() => adminLoginAlert.classList.remove('show'), 4000);
+        }
+
+        function showUserAlert(msg) {
+            userAlertMsg.textContent = msg;
+            userLoginAlert.classList.add('show');
+            setTimeout(() => userLoginAlert.classList.remove('show'), 4000);
+        }
+
+        // ----- load/save posts -----
+        function loadPosts() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) {
+                try { posts = JSON.parse(stored); } catch(e) { posts = []; }
+            } else {
+                posts = [
+                    { id: Date.now() - 300000, title: 'Morning Inspiration', author: 'Admin', content: 'Every day is a new opportunity. Rise and shine!', date: getTodayStr(), owner: 'admin', likes: 12, comments: [] },
+                    { id: Date.now() - 200000, title: 'Youth for Change', author: 'Admin', content: 'Shaping India\'s tomorrow with the power of youth.', date: getTodayStr(), owner: 'admin', likes: 8, comments: [] }
+                ];
+                savePosts();
+            }
+            posts = posts.map(p => ({ ...p, likes: p.likes || 0, comments: p.comments || [] }));
+            savePosts();
+            updateStats();
+        }
+
+        function savePosts() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+            updateStats();
+        }
+
+        function updateStats() {
+            if (totalPostsCount) totalPostsCount.textContent = posts.length;
+            const totalLikes = posts.reduce((sum, p) => sum + (p.likes || 0), 0);
+            if (totalLikesCount) totalLikesCount.textContent = totalLikes;
+            const users = getUsers();
+            if (totalUsersCount) totalUsersCount.textContent = Object.keys(users).length;
+        }
+
+        // ----- user management -----
+        function getUsers() {
+            const stored = localStorage.getItem(USERS_KEY);
+            if (stored) {
+                try { return JSON.parse(stored); } catch(e) { return {}; }
+            }
+            const defaultUsers = {
+                'admin': { password: 'admin123', isAdmin: true },
+                'user1': { password: 'user123', isAdmin: false },
+                'user2': { password: 'user123', isAdmin: false }
+            };
+            localStorage.setItem(USERS_KEY, JSON.stringify(defaultUsers));
+            return defaultUsers;
+        }
+
+        function authenticateUser(username, password) {
+            const users = getUsers();
+            const user = users[username];
+            if (user && user.password === password) {
+                return { username, isAdmin: user.isAdmin || false };
+            }
+            return null;
+        }
+
+        // ----- render blog -----
+        function renderBlog(filterDateStr, searchQuery) {
+            let filtered = [...posts];
+            if (filterDateStr) {
+                filtered = filtered.filter(p => p.date === filterDateStr);
+            }
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase().trim();
+                filtered = filtered.filter(p => 
+                    p.title.toLowerCase().includes(q) || 
+                    p.author.toLowerCase().includes(q) ||
+                    p.content.toLowerCase().includes(q)
+                );
+            }
+            if (filtered.length === 0) {
+                blogList.innerHTML = `<div class="blog-post" style="border-left-color: #aaa; background: #f2ede6;">
+                    <h3>No posts found</h3>
+                    <p>Write a new post or try a different search.</p>
+                </div>`;
+                return;
+            }
+            let html = '';
+            const sorted = [...filtered].reverse();
+            for (let p of sorted) {
+                const dateStr = p.date || new Date(p.id).toISOString().slice(0,10);
+                const excerpt = p.content.length > 150 ? p.content.substring(0, 150) + '...' : p.content;
+                const isAdmin = currentAdmin !== null;
+                const isOwner = currentUser && currentUser.username === p.owner;
+                const showDelete = isAdmin || isOwner;
+                const showEdit = isAdmin || isOwner;
+                const isLiked = currentUser && p.likedBy && p.likedBy.includes(currentUser.username);
+                html += `
+                    <div class="blog-post" data-post-id="${p.id}">
+                        <h3><a href="#" class="post-link" data-id="${p.id}">${escapeHtml(p.title)}</a></h3>
+                        <div class="meta">
+                            <span><i class="fas fa-user-edit"></i> ${escapeHtml(p.author || 'Unknown')}</span>
+                            <span><i class="far fa-calendar-alt"></i> ${formatDate(dateStr)}</span>
+                            <span><i class="fas fa-user-tag"></i> ${escapeHtml(p.owner || 'admin')}</span>
+                        </div>
+                        <div class="excerpt">${escapeHtml(excerpt)}</div>
+                        <a href="#" class="read-more post-link" data-id="${p.id}">Read full <i class="fas fa-arrow-right"></i></a>
+                        <span class="post-tag"><i class="fas fa-tag"></i> daily</span>
+                        <div class="post-actions">
+                            <button class="like-btn ${isLiked ? 'liked' : ''}" data-id="${p.id}"><i class="fas fa-heart"></i> <span class="like-count">${p.likes || 0}</span></button>
+                            <button class="comment-btn" data-id="${p.id}"><i class="fas fa-comment"></i> ${(p.comments || []).length}</button>
+                            <button class="share-btn" data-id="${p.id}"><i class="fas fa-share-alt"></i> Share</button>
+                        </div>
+                        ${showDelete ? `<button class="delete-post-btn" data-id="${p.id}"><i class="fas fa-trash-alt"></i></button>` : ''}
+                        ${showEdit ? `<button class="edit-post-btn" data-id="${p.id}"><i class="fas fa-edit"></i></button>` : ''}
+                    </div>
                 `;
+            }
+            blogList.innerHTML = html;
 
-                document.getElementById('backToBlog').addEventListener('click', function(e) {
+            // Event listeners
+            document.querySelectorAll('.post-link').forEach(link => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    switchPage('blog');
+                    const id = Number(this.dataset.id);
+                    showSinglePost(id);
                 });
+            });
 
-                container.querySelector('.delete-btn-single').addEventListener('click', function() {
+            document.querySelectorAll('.delete-post-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = Number(this.dataset.id);
+                    deletePostById(id);
+                });
+            });
+
+            document.querySelectorAll('.edit-post-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = Number(this.dataset.id);
+                    editPostById(id);
+                });
+            });
+
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = Number(this.dataset.id);
+                    toggleLike(id);
+                });
+            });
+
+            document.querySelectorAll('.comment-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = Number(this.dataset.id);
+                    showSinglePost(id);
+                });
+            });
+
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = Number(this.dataset.id);
+                    sharePost(id);
+                });
+            });
+        }
+
+        // ----- Like -----
+        function toggleLike(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (!post) return;
+            if (!currentUser && !currentAdmin) {
+                showToast('Please login to like posts.', 'error');
+                return;
+            }
+            const username = currentUser ? currentUser.username : 'admin';
+            if (!post.likedBy) post.likedBy = [];
+            const idx = post.likedBy.indexOf(username);
+            if (idx > -1) {
+                post.likedBy.splice(idx, 1);
+                post.likes = (post.likes || 0) - 1;
+                showToast('Unliked!', 'info');
+            } else {
+                post.likedBy.push(username);
+                post.likes = (post.likes || 0) + 1;
+                showToast('Liked! ❤️', 'success');
+            }
+            savePosts();
+            renderBlog(getActiveFilter(), searchInput.value);
+        }
+
+        // ----- Share -----
+        function sharePost(postId) {
+            const post = posts.find(p => p.id === postId);
+            if (!post) return;
+            const url = window.location.href;
+            const text = `Check out "${post.title}" on Wakeup India!`;
+            if (navigator.share) {
+                navigator.share({ title: post.title, text: text, url: url }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(`${text} ${url}`).then(() => {
+                    showToast('Link copied to clipboard!', 'success');
+                }).catch(() => {
+                    showToast('Share: ' + text + ' ' + url, 'info');
+                });
+            }
+        }
+
+        // ----- Edit -----
+        function editPostById(id) {
+            const post = posts.find(p => p.id === id);
+            if (!post) return;
+            const isAdmin = currentAdmin !== null;
+            const isOwner = currentUser && currentUser.username === post.owner;
+            if (!isAdmin && !isOwner) {
+                showToast('You can only edit your own posts.', 'error');
+                return;
+            }
+            editingPostId = id;
+            // If admin is logged in, use admin form; else user form
+            if (isAdmin) {
+                adminTitle.value = post.title;
+                adminAuthor.value = post.author;
+                adminContent.value = post.content;
+                switchPage('admin');
+                adminTitle.focus();
+                showToast('Editing post. Click Publish to save.', 'info');
+            } else if (currentUser) {
+                userTitle.value = post.title;
+                userAuthor.value = post.author;
+                userContent.value = post.content;
+                switchPage('user');
+                userTitle.focus();
+                showToast('Editing your post. Click Publish to save.', 'info');
+            }
+        }
+
+        // ----- Delete -----
+        function deletePostById(id) {
+            const post = posts.find(p => p.id === id);
+            if (!post) return;
+            const isAdmin = currentAdmin !== null;
+            const isOwner = currentUser && currentUser.username === post.owner;
+            if (!isAdmin && !isOwner) {
+                showToast('You can only delete your own posts.', 'error');
+                return;
+            }
+            if (!confirm('Delete this post?')) return;
+            posts = posts.filter(p => p.id !== id);
+            savePosts();
+            renderBlog(getActiveFilter(), searchInput.value);
+            if (document.getElementById('page-single').classList.contains('active-page')) {
+                switchPage('blog');
+            }
+            showToast('Post deleted.', 'info');
+        }
+
+        // ----- show single post -----
+        function showSinglePost(id) {
+            const post = posts.find(p => p.id === id);
+            if (!post) { showToast('Post not found.', 'error'); return; }
+            const dateStr = post.date || new Date(post.id).toISOString().slice(0,10);
+            const isAdmin = currentAdmin !== null;
+            const isOwner = currentUser && currentUser.username === post.owner;
+            const showDelete = isAdmin || isOwner;
+            const showEdit = isAdmin || isOwner;
+            const isLiked = currentUser && post.likedBy && post.likedBy.includes(currentUser.username);
+            singleContainer.innerHTML = `
+                <div class="single-post-page">
+                    <h1>${escapeHtml(post.title)}</h1>
+                    <div class="meta">
+                        <span><i class="fas fa-user-edit"></i> ${escapeHtml(post.author || 'Unknown')}</span>
+                        <span><i class="far fa-calendar-alt"></i> ${formatDate(dateStr)}</span>
+                        <span><i class="fas fa-user-tag"></i> ${escapeHtml(post.owner || 'admin')}</span>
+                        <span><i class="fas fa-heart" style="color:#e74c3c;"></i> ${post.likes || 0}</span>
+                        <span><i class="fas fa-comment"></i> ${(post.comments || []).length}</span>
+                    </div>
+                    <div class="full-content">${escapeHtml(post.content)}</div>
+                    <div class="action-bar">
+                        <a href="#" class="back-link" id="backToBlog"><i class="fas fa-arrow-left"></i> Back</a>
+                        <button class="like-btn ${isLiked ? 'liked' : ''}" data-id="${post.id}" style="background:none; border:none; cursor:pointer; font-size:1.2rem; color:#e74c3c;"><i class="fas fa-heart"></i> <span class="like-count">${post.likes || 0}</span></button>
+                        ${showEdit ? `<button class="edit-btn-single" data-id="${post.id}"><i class="fas fa-edit"></i> Edit</button>` : ''}
+                        ${showDelete ? `<button class="delete-btn-single" data-id="${post.id}"><i class="fas fa-trash-alt"></i> Delete</button>` : ''}
+                        <button class="share-btn-single" data-id="${post.id}" style="background:#2a6b8a; color:white; border:none; border-radius:60px; padding:0.5rem 1.5rem; cursor:pointer;"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                    <div style="margin-top:1.5rem; border-top:1px solid #ede6db; padding-top:1rem;">
+                        <h4><i class="fas fa-comments"></i> Comments</h4>
+                        <div id="commentsContainer">
+                            ${(post.comments || []).map(c => `<div style="padding:0.5rem 0; border-bottom:1px solid #eee;"><strong>${escapeHtml(c.author)}</strong>: ${escapeHtml(c.text)} <span style="font-size:0.7rem; color:#999;">${c.date || ''}</span></div>`).join('')}
+                        </div>
+                        ${currentUser || currentAdmin ? `
+                            <div style="display:flex; gap:8px; margin-top:0.8rem;">
+                                <input type="text" id="commentInput" placeholder="Write a comment..." style="flex:1; padding:0.5rem 0.8rem; border-radius:40px; border:1px solid #ddd; background:rgba(255,255,255,0.05);" />
+                                <button id="addCommentBtn" class="admin-btn" style="padding:0.4rem 1.2rem; font-size:0.9rem;">Post</button>
+                            </div>
+                        ` : `<p style="color:#999; font-size:0.9rem;">Login to comment.</p>`}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('backToBlog').addEventListener('click', function(e) {
+                e.preventDefault();
+                switchPage('blog');
+            });
+
+            const delBtn = singleContainer.querySelector('.delete-btn-single');
+            if (delBtn) {
+                delBtn.addEventListener('click', function() {
                     const pid = Number(this.dataset.id);
                     deletePostById(pid);
-                    switchPage('blog');
                 });
-
-                switchPage('single');
             }
 
-            function deletePostById(id) {
-                if (!id) return;
-                if (!confirm('Are you sure you want to delete this post?')) return;
-                const index = posts.findIndex(p => p.id === id);
-                if (index !== -1) {
-                    posts.splice(index, 1);
+            const editBtn = singleContainer.querySelector('.edit-btn-single');
+            if (editBtn) {
+                editBtn.addEventListener('click', function() {
+                    const pid = Number(this.dataset.id);
+                    editPostById(pid);
+                });
+            }
+
+            const likeBtn = singleContainer.querySelector('.like-btn');
+            if (likeBtn) {
+                likeBtn.addEventListener('click', function() {
+                    const pid = Number(this.dataset.id);
+                    toggleLike(pid);
+                    setTimeout(() => showSinglePost(pid), 100);
+                });
+            }
+
+            const shareBtn = singleContainer.querySelector('.share-btn-single');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', function() {
+                    const pid = Number(this.dataset.id);
+                    sharePost(pid);
+                });
+            }
+
+            const commentBtn = document.getElementById('addCommentBtn');
+            if (commentBtn) {
+                commentBtn.addEventListener('click', function() {
+                    const input = document.getElementById('commentInput');
+                    const text = input.value.trim();
+                    if (!text) return;
+                    const postRef = posts.find(p => p.id === post.id);
+                    if (!postRef) return;
+                    if (!postRef.comments) postRef.comments = [];
+                    postRef.comments.push({
+                        author: currentUser ? currentUser.username : (currentAdmin ? currentAdmin.username : 'Anonymous'),
+                        text: text,
+                        date: new Date().toLocaleString()
+                    });
                     savePosts();
-                    const activePage = document.querySelector('.page.active-page');
-                    if (activePage && activePage.id === 'page-single') {
-                        switchPage('blog');
-                    }
+                    showToast('Comment added!', 'success');
+                    showSinglePost(post.id);
+                });
+            }
+
+            switchPage('single');
+        }
+
+        // ----- navigation -----
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const pageMap = {
+            home: document.getElementById('page-home'),
+            blog: document.getElementById('page-blog'),
+            single: document.getElementById('page-single'),
+            admin: document.getElementById('page-admin'),
+            user: document.getElementById('page-user')
+        };
+
+        function switchPage(pageId) {
+            Object.values(pageMap).forEach(p => { if (p) p.classList.remove('active-page'); });
+            if (pageMap[pageId]) pageMap[pageId].classList.add('active-page');
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.page === pageId) btn.classList.add('active');
+            });
+            if (pageId === 'blog' || pageId === 'admin' || pageId === 'user') {
+                renderBlog(getActiveFilter(), searchInput.value);
+            }
+            if (pageId === 'admin') {
+                userDisplay.style.display = 'none';
+            } else if (pageId === 'user' || pageId === 'blog') {
+                if (currentUser) {
+                    userDisplay.style.display = 'inline';
+                    currentUserLabel.textContent = currentUser.username;
                 } else {
-                    alert('Post not found.');
+                    userDisplay.style.display = 'none';
                 }
+            } else {
+                userDisplay.style.display = 'none';
             }
+            navLinks.classList.remove('open');
+        }
 
-            function escapeHtml(text) {
-                if (!text) return '';
-                const map = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'};
-                return String(text).replace(/[&<>"']/g, function(m) { return map[m]; });
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const page = this.dataset.page;
+                if (page && pageMap[page]) switchPage(page);
+            });
+        });
+
+        function getActiveFilter() { return filterDate.value || ''; }
+
+        // ----- ADMIN LOGIN -----
+        adminLoginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('adminName').value.trim();
+            const password = document.getElementById('adminPass').value.trim();
+            const auth = authenticateUser(username, password);
+            if (auth && auth.isAdmin) {
+                currentAdmin = auth;
+                adminLoginCard.style.display = 'none';
+                adminCmsPanel.style.display = 'block';
+                adminLoginStatus.textContent = `✅ Logged in as ${username}`;
+                showToast('Admin login successful!', 'success');
+                renderBlog(getActiveFilter(), searchInput.value);
+                switchPage('blog');
+                navBtns.forEach(b => { b.classList.remove('active'); if (b.dataset.page === 'blog') b.classList.add('active'); });
+            } else if (auth && !auth.isAdmin) {
+                showAdminAlert('❌ Not an admin account.');
+            } else {
+                showAdminAlert('❌ Invalid admin credentials.');
             }
+        });
 
-            function addPost(title, author, content) {
-                if (!title.trim() || !content.trim()) return false;
+        // ADMIN: add/update post
+        adminPostForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!currentAdmin) { showToast('Please login as admin first.', 'error'); return; }
+            const title = adminTitle.value.trim();
+            const author = adminAuthor.value.trim() || 'Admin';
+            const content = adminContent.value.trim();
+            if (!title || !content) { showToast('Please fill title and content.', 'error'); return; }
+            
+            if (editingPostId) {
+                const post = posts.find(p => p.id === editingPostId);
+                if (post) {
+                    post.title = title;
+                    post.author = author;
+                    post.content = content;
+                    post.date = getTodayStr();
+                    savePosts();
+                    showToast('Post updated!', 'success');
+                    editingPostId = null;
+                }
+            } else {
                 const newPost = {
                     id: Date.now(),
-                    title: title.trim(),
-                    author: author.trim() || 'Wakeup India',
-                    content: content.trim(),
-                    date: new Date().toLocaleDateString('en-IN')
+                    title: title,
+                    author: author,
+                    content: content,
+                    date: getTodayStr(),
+                    owner: 'admin',
+                    likes: 0,
+                    comments: [],
+                    likedBy: []
                 };
                 posts.push(newPost);
                 savePosts();
-                return true;
+                showToast('Post published!', 'success');
             }
+            adminTitle.value = '';
+            adminContent.value = '';
+            filterDate.value = getTodayStr();
+            renderBlog(getTodayStr(), searchInput.value);
+            switchPage('blog');
+            navBtns.forEach(b => { b.classList.remove('active'); if (b.dataset.page === 'blog') b.classList.add('active'); });
+        });
 
-            function clearPosts() {
-                if (posts.length === 0) return;
-                if (confirm('Delete all posts? This action is permanent.')) {
-                    posts = [];
+        adminClearAll.addEventListener('click', function() {
+            if (!currentAdmin) { showToast('Please login as admin first.', 'error'); return; }
+            if (!confirm('Delete ALL posts? This cannot be undone.')) return;
+            posts = [];
+            savePosts();
+            renderBlog(getActiveFilter(), searchInput.value);
+            showToast('All posts cleared.', 'info');
+        });
+
+        adminLogoutBtn.addEventListener('click', function() {
+            currentAdmin = null;
+            adminLoginCard.style.display = 'block';
+            adminCmsPanel.style.display = 'none';
+            adminLoginStatus.textContent = '🔒 Logged out';
+            showToast('Admin logged out.', 'info');
+            renderBlog(getActiveFilter(), searchInput.value);
+            switchPage('admin');
+        });
+
+        // ----- USER login -----
+        userLoginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('userName').value.trim();
+            const password = document.getElementById('userPass').value.trim();
+            const auth = authenticateUser(username, password);
+            if (auth && !auth.isAdmin) {
+                currentUser = auth;
+                userLoginCard.style.display = 'none';
+                userCmsPanel.style.display = 'block';
+                userLoginStatus.textContent = `✅ Logged in as ${username}`;
+                userPanelLabel.textContent = username;
+                userDisplay.style.display = 'inline';
+                currentUserLabel.textContent = username;
+                document.getElementById('userAuthor').value = username;
+                showToast('User login successful!', 'success');
+                renderBlog(getActiveFilter(), searchInput.value);
+                switchPage('blog');
+                navBtns.forEach(b => { b.classList.remove('active'); if (b.dataset.page === 'blog') b.classList.add('active'); });
+            } else if (auth && auth.isAdmin) {
+                showUserAlert('❌ Admin cannot login here. Use Admin panel.');
+            } else {
+                showUserAlert('❌ Invalid username or password.');
+            }
+        });
+
+        // USER: add/update post
+        userPostForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!currentUser) { showToast('Please login first.', 'error'); return; }
+            const title = userTitle.value.trim();
+            const author = userAuthor.value.trim() || currentUser.username;
+            const content = userContent.value.trim();
+            if (!title || !content) { showToast('Please fill title and content.', 'error'); return; }
+            
+            if (editingPostId) {
+                const post = posts.find(p => p.id === editingPostId);
+                if (post && post.owner === currentUser.username) {
+                    post.title = title;
+                    post.author = author;
+                    post.content = content;
+                    post.date = getTodayStr();
                     savePosts();
-                }
-            }
-
-            // ----- NAVIGATION (FIXED) -----
-            const navBtns = document.querySelectorAll('.nav-btn');
-            const pageMap = {
-                home: document.getElementById('page-home'),
-                blog: document.getElementById('page-blog'),
-                single: document.getElementById('page-single'),
-                admin: document.getElementById('page-admin')
-            };
-
-            function switchPage(pageId) {
-                // Hide all pages
-                Object.values(pageMap).forEach(p => {
-                    if (p) p.classList.remove('active-page');
-                });
-                // Show target page
-                if (pageMap[pageId]) {
-                    pageMap[pageId].classList.add('active-page');
-                }
-                // Update nav button active states
-                navBtns.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.dataset.page === pageId) {
-                        btn.classList.add('active');
-                    }
-                });
-                // If single page, remove active from all nav buttons
-                if (pageId === 'single') {
-                    navBtns.forEach(btn => btn.classList.remove('active'));
-                }
-            }
-
-            // Attach click events to nav buttons
-            navBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const page = this.dataset.page;
-                    if (page && pageMap[page]) {
-                        switchPage(page);
-                    } else {
-                        console.warn('Page not found:', page);
-                    }
-                });
-            });
-
-            // ----- LOGIN (simple) -----
-            const loginForm = document.getElementById('loginForm');
-            const loginAlert = document.getElementById('loginAlert');
-            const alertMessage = document.getElementById('alertMessage');
-            const loginStatus = document.getElementById('loginStatus');
-            const cmsPanel = document.getElementById('adminCmsPanel');
-            const loginCard = document.getElementById('adminLoginCard');
-            let loggedIn = false;
-
-            function showAlert(msg) {
-                alertMessage.textContent = msg;
-                loginAlert.classList.add('show');
-                setTimeout(() => loginAlert.classList.remove('show'), 4000);
-            }
-
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const username = document.getElementById('username').value.trim();
-                const password = document.getElementById('password').value.trim();
-
-                if (username === 'admin' && password === 'admin123') {
-                    loggedIn = true;
-                    loginCard.style.display = 'none';
-                    cmsPanel.style.display = 'block';
-                    loginStatus.textContent = '✅ Logged in as Admin';
+                    showToast('Post updated!', 'success');
+                    editingPostId = null;
                 } else {
-                    showAlert('❌ Invalid username or password. Try again.');
+                    showToast('You can only edit your own posts.', 'error');
                 }
-            });
-
-            // ----- ADMIN POST FORM -----
-            const form = document.getElementById('adminPostForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    if (!loggedIn) {
-                        alert('Please login first.');
-                        return;
-                    }
-                    const title = document.getElementById('postTitle');
-                    const author = document.getElementById('postAuthor');
-                    const content = document.getElementById('postContent');
-                    if (!title.value.trim() || !content.value.trim()) {
-                        alert('Please fill in both title and content.');
-                        return;
-                    }
-                    const success = addPost(title.value, author.value, content.value);
-                    if (success) {
-                        title.value = '';
-                        content.value = '';
-                        switchPage('blog');
-                        navBtns.forEach(b => {
-                            b.classList.remove('active');
-                            if (b.dataset.page === 'blog') b.classList.add('active');
-                        });
-                    } else {
-                        alert('Something went wrong.');
-                    }
-                });
+            } else {
+                const newPost = {
+                    id: Date.now(),
+                    title: title,
+                    author: author,
+                    content: content,
+                    date: getTodayStr(),
+                    owner: currentUser.username,
+                    likes: 0,
+                    comments: [],
+                    likedBy: []
+                };
+                posts.push(newPost);
+                savePosts();
+                showToast('Post published!', 'success');
             }
+            userTitle.value = '';
+            userContent.value = '';
+            filterDate.value = getTodayStr();
+            renderBlog(getTodayStr(), searchInput.value);
+            switchPage('blog');
+            navBtns.forEach(b => { b.classList.remove('active'); if (b.dataset.page === 'blog') b.classList.add('active'); });
+        });
 
-            // clear posts button
-            const clearBtn = document.getElementById('clearPostsBtn');
-            if (clearBtn) {
-                clearBtn.addEventListener('click', function() {
-                    if (!loggedIn) {
-                        alert('Please login first.');
-                        return;
-                    }
-                    clearPosts();
-                });
+        userLogoutBtn.addEventListener('click', function() {
+            currentUser = null;
+            editingPostId = null;
+            userLoginCard.style.display = 'block';
+            userCmsPanel.style.display = 'none';
+            userDisplay.style.display = 'none';
+            currentUserLabel.textContent = 'Guest';
+            userLoginStatus.textContent = '🔒 Logged out';
+            showToast('Logged out.', 'info');
+            renderBlog(getActiveFilter(), searchInput.value);
+            switchPage('user');
+        });
+
+        // ----- filters -----
+        applyFilterBtn.addEventListener('click', function() {
+            renderBlog(filterDate.value, searchInput.value);
+        });
+
+        todayFilterBtn.addEventListener('click', function() {
+            filterDate.value = getTodayStr();
+            renderBlog(getTodayStr(), searchInput.value);
+        });
+
+        searchBtn.addEventListener('click', function() {
+            renderBlog(filterDate.value, searchInput.value);
+        });
+
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') renderBlog(filterDate.value, searchInput.value);
+        });
+
+        filterDate.value = getTodayStr();
+
+        // ----- init -----
+        loadPosts();
+        renderBlog(getTodayStr(), '');
+        switchPage('home');
+
+        // Auto refresh
+        setInterval(() => {
+            const active = document.querySelector('.page.active-page');
+            if (active && (active.id === 'page-blog' || active.id === 'page-single' || active.id === 'page-admin' || active.id === 'page-user')) {
+                loadPosts();
+                renderBlog(getActiveFilter(), searchInput.value);
             }
+        }, 15000);
 
-            // ----- INIT -----
-            loadPosts();
-            // Start on home page
-            switchPage('home');
-        })();
-    </script>
-
+    })();
+</script>
 </body>
 </html>
-```
